@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Invitation</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffebcc;
+            text-align: center;
+        }
+        header {
+            background-color: #ff6666;
+            padding: 20px 0;
+        }
+        h1 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 80%;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .invitation {
+            background-color: #fff;
+            padding: 5%;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            display: inline-block;
+            padding: 3% 5%;
+            border-radius: 5px;
+            margin-top: 4%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #yesBtn {
+            background-color: #66cc66;
+            color: #fff;
+            border: none;
+            font-size: 2vw;
+        }
+        #noBtn {
+            background-color: #ff9999;
+            color: #fff;
+            border: none;
+            font-size: 2vw;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+        }
+        .ask-section {
+            margin-top: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .response-text {
+            color: #ff6666;
+            font-size: 3vw;
+            margin-top: 5%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Will You Go Out On a Date With Me?</h1>
+    </header>
+    <div class="container">
+        <div class="invitation">
+  		<p>You can Always say yes😉</p>
+            <div class="ask-section">
+                <button class="btn" id="yesBtn">Yes</button>
+                <div style="margin-left: 5%;"></div> <!-- Adding space between buttons -->
+                <button class="btn" id="noBtn">No</button>
+            </div>
+            <p class="response-text" id="responseText"></p>
+        </div>
+    </div>
+    <script>
+        let yesButton = document.getElementById('yesBtn');
+        let noButton = document.getElementById('noBtn');
+        let responseText = document.getElementById('responseText');
+        let sizeMultiplier = 1;
+        let prompts = [
+            "Aww, okay, but I promise to make it up to you!",
+            "No worries, I'll keep trying!",
+            "That's okay, I'll ask again some other time!",
+            "Sure thing! Let me know if you change your mind!",
+            "Alright, maybe next time!",
+            "Don't worry, I won't give up that easily!",
+            "Got it, I'll plan something even more special!",
+            "I understand, but I really hope you reconsider!",
+            "Okay, but just know that I'll be thinking of you!",
+            "No problem, but you'll be the first to know when I have another idea!"
+        ];
+
+        noButton.addEventListener('click', function() {
+            let randomIndex = Math.floor(Math.random() * prompts.length);
+            responseText.textContent = prompts[randomIndex];
+            responseText.style.display = 'block';
+            responseText.style.color = '#ff9999';
+            sizeMultiplier *= 1.5;
+            yesButton.style.fontSize = `${2 * sizeMultiplier}vw`;
+            yesButton.style.backgroundColor = '#66cc66';
+            noButton.style.backgroundColor = '#ff9999';
+        });
+
+        yesButton.addEventListener('click', function() {
+            responseText.textContent = "Yaayyy, I am waiting for you!";
+            responseText.style.display = 'block';
+            responseText.style.color = '#66cc66';
+            yesButton.style.backgroundColor = '#66cc66';
+            noButton.style.backgroundColor = '#ff9999';
+            sizeMultiplier = 1; // Reset size multiplier
+            yesButton.style.fontSize = '2vw'; // Back to original size
+        });
+    </script>
+</body>
+</html>
